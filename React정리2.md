@@ -1,4 +1,37 @@
 # 1. useState
+
+### State 변수 공유
+```
+import { useState } from 'react';
+
+export default function MyApp() {
+  return (
+    <div>
+      <h1>Counters that update separately</h1>
+      <MyButton />
+      <MyButton />
+    </div>
+  );
+}
+
+function MyButton() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  return (
+    <button onClick={handleClick}>
+      Clicked {count} times
+    </button>
+  );
+}
+```
+- 위의 코드는 myApp 컴포넌트가 기본적으로 실행되는데 state 변수가 MyButton에 있다.
+- myButton에 state가 각각 생성돼기에 두 개의 버튼은 값을 공유하지 않음
+- 값을 공유하고 싶다면 MyApp에 useState훅을 추가한다.
+
 ### 여러개의 input태그 관리
 ```
 import React, { useState } from 'react';
